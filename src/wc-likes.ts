@@ -77,6 +77,7 @@ class WCLikes extends HTMLElement {
     connectedCallback() {
         if(this.LikesRendered === false) {
             this.buildElement();
+            this.LikesRendered = true;
         }
     }
     /**
