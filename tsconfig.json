@@ -1,0 +1,13 @@
+{
+    "files": ["src/wc-likes.ts"],
+    "compilerOptions": {
+      "module": "es2022",
+      "skipLibCheck": true,
+      "allowJs": false,
+      "declaration": true,
+      "outDir": "./dist",
+      "declarationMap": true,
+      "target": "ESNEXT",
+      "removeComments": true,
+    }
+  }
