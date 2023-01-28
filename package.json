@@ -1,5 +1,5 @@
 {
-  "name": "wc-likes",
+  "name": "@webislife/wc-likes",
   "version": "1.0.0",
   "description": "native web-component for likes in any pages and js frameworks",
   "main": "src/wc-likes.ts",
@@ -29,5 +29,8 @@
     "babel-minify": "^0.5.2",
     "node-sass": "^8.0.0",
     "typescript": "^4.9.4"
+  },
+  "publishConfig": {
+    "@webislife:registry": "https://npm.pkg.github.com"
   }
 }
