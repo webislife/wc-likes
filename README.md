@@ -1,15 +1,11 @@
 # wc-likes
 Native web component for likes in any pages. Very simple for use\customize and integration with any js framework like vue\react\angular\other, support best web development practises
 
-see demo.html with integration this web-component
-```
-    //set -fetch state for SSR async likes
-    <wc-likes class="-fetch" data-post-id="1" data-logged="1"></wc-likes-post>
-    //liked state
-    <wc-likes class="-liked" data-post-id="1" data-logged="1"></wc-likes-post>
-    //need auth state
-    <wc-likes class="-liked" data-post-id="1" data-logged="0"></wc-likes-post>
-```
+see dist/index.html with integration this web-component
+
+see demo in [English demo](https://webislife.ru/demo/wc-likes/)
+see demo in [Russian demo](https://webislife.ru/demo/wc-likes/index-ru.html)
+
 available package commands
 `npm run sass' - build scss styles
 `npm run tsc' - run typescript

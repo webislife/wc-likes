@@ -1,4 +1,8 @@
 @charset "UTF-8";
+:root {
+  --wc-likes-color-red: #f00;
+  --wc-likes-color-bg: #fafafa; }
+
 @keyframes wcLikesSubmit {
   0% {
     visibility: visible;
@@ -19,19 +23,41 @@
   display: inline-flex;
   align-items: center;
   padding: 0px 1em 0px 0px;
-  border: 1px solid var(--color-blue-light-100);
+  border: 1px solid var(--wc-likes-color-bg);
   border-radius: 20px;
   transition: all 0.2s ease;
-  user-select: none; }
+  user-select: none;
+  /* hints */ }
   .wc-likes:hover {
-    background-color: var(--color-blue-light-50);
-    border-color: var(--color-blue-light-50); }
+    background-color: var(--wc-likes-color-bg);
+    border-color: var(--wc-likes-color-bg);
+    color: #000; }
   .wc-likes:after {
     min-width: 100px;
     text-align: center;
     white-space: nowrap;
-    background-color: var(--color-blue-light-50);
+    background-color: var(--wc-likes-color-bg);
     color: var(--color-blue-500); }
+  .wc-likes[data-hint] {
+    position: relative; }
+  .wc-likes[data-hint]:hover:after {
+    visibility: visible;
+    transform: translate(-50%, -100%); }
+  .wc-likes[data-hint]:after {
+    visibility: hidden;
+    position: absolute;
+    transition: transform .2s ease;
+    left: 50%;
+    top: -3px;
+    transform: translate(-50%, 0%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    content: attr(data-hint);
+    display: inline-block;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    line-height: 0.8em; }
   .wc-likes > button {
     user-select: contain;
     display: inline-flex;
@@ -42,7 +68,7 @@
     height: 2em;
     transition: all 0.2s ease;
     margin-right: 10px;
-    color: var(--color-red-500);
+    color: var(--wc-likes-color-red);
     background-color: #fff;
     border: none;
     border-radius: 50%;
@@ -52,10 +78,10 @@
       background-color: var(--color-red-100);
       border: none; }
       .wc-likes > button:hover > svg {
-        fill: var(--color-red-500); }
+        fill: var(--wc-likes-color-red); }
     .wc-likes > button:after {
       visibility: hidden;
-      color: var(--color-red-500);
+      color: var(--wc-likes-color-red);
       content: '♥';
       position: absolute; }
     .wc-likes > button > svg {
@@ -67,7 +93,7 @@
     .wc-likes.-fetch > button:before {
       position: absolute;
       border: 2px solid var(--color-red-100);
-      border-top: 2px solid var(--color-red-500);
+      border-top: 2px solid var(--wc-likes-color-red);
       border-radius: 50%;
       display: block;
       width: 2em;
@@ -75,11 +101,11 @@
       content: '';
       animation: wcLikesFetch 1s linear infinite; }
   .wc-likes.-liked {
-    background-color: var(--color-blue-light-100);
-    border-color: var(--color-blue-light-100); }
+    background-color: var(--wc-likes-color-bg);
+    border-color: var(--wc-likes-color-bg);
+    color: #111; }
     .wc-likes.-liked > button {
-      background-color: var(--color-red-500);
-      color: #fff; }
+      background-color: var(--wc-likes-color-red); }
       .wc-likes.-liked > button:after {
         animation-fill-mode: forwards;
         animation-duration: 0.4s;
@@ -87,3 +113,14 @@
       .wc-likes.-liked > button > svg {
         fill: #fff;
         stroke: none; }
+  .wc-likes.-disabled {
+    cursor: none;
+    filter: brightness(40%); }
+    .wc-likes.-disabled:hover {
+      background-color: transparent;
+      border-color: inherit; }
+    .wc-likes.-disabled > button:hover {
+      background-color: transparent;
+      border: none; }
+      .wc-likes.-disabled > button:hover > svg {
+        fill: rgba(255, 255, 255, 0.5); }

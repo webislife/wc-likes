@@ -18,34 +18,36 @@
 
 type WCLikesPhrasesKey = keyof typeof WCLikesLangs;
 type WCLikesLang = typeof WCLikesLangs[WCLikesPhrasesKey];
-
 /**
  * Web-component wc-likes
  */
-class WCLikes extends HTMLElement {
+ class WCLikes extends HTMLElement {
 
     public Liked:boolean = false
     public LikesRendered:boolean = false
     public LikesCount:number = 0
     public LikesFetch:boolean = false
+    public LikesDisabled:boolean = false
     public LikesCountNode:Node
     public LikesIcon:HTMLElement
     public LikesPhrases:WCLikesLang
-    public LikesPhrasesLang:WCLikesPhrasesKey|string
+    public LikesPhrasesLang:WCLikesPhrasesKey
 
     constructor() {
         super();
-        const defaultLang = 'ru';
         
+        this.LikesIcon = document.createElement('button');
         this.LikesCount = Number(this.getAttribute('value'));
-        this.LikesPhrasesLang = defaultLang;
-        this.LikesPhrases = WCLikesLangs[this.LikesPhrasesLang];
+        this.Liked = this.getAttribute('liked') === 'true';
+        this.LikesFetch = this.getAttribute('fetch') === 'true';
+        this.LikesDisabled = this.getAttribute('disabled') === 'true';
+        this.LikesPhrasesLang = this.getAttribute('lang') as WCLikesPhrasesKey || 'en';
+        this.LikesPhrases = WCLikesLangs[this.LikesPhrasesLang] as WCLikesLang;
+        this.LikesCountNode = document.createTextNode(String(this.LikesCount));
         this.classList.add('wc-likes');
-        
     }
-
     static get observedAttributes() {
-        return ['value', 'liked', 'fetch'];
+        return ['value', 'liked', 'fetch', 'disabled'];
     }
     /**
      * Attributes handler
@@ -54,20 +56,22 @@ class WCLikes extends HTMLElement {
         switch (name) {
             case 'value':
                 this.LikesCount = Number(newValue);
-                this.LikesCountNode.nodeValue = String(newValue);
+                if(this.LikesRendered) {
+                    this.LikesCountNode.nodeValue = String(newValue);
+                }
                 break;
             case 'liked':
-                this.classList.toggle('-liked', newValue !== null);
+                this.classList.toggle('-liked', String(newValue) === 'true');
                 break;
             case 'fetch':
-                this.classList.toggle('-fetch', newValue !== null);
+                this.classList.toggle('-fetch', String(newValue) === 'true' || String(newValue) === '1');
+                break;
+            case 'disabled':
+                this.classList.toggle('-disabled', String(newValue) === 'true');
                 break;
             default:
                 break;
         }
-    }
-    valueOf():number {
-        return this.LikesCount
     }
     /**
      * onmount component logic
@@ -82,11 +86,17 @@ class WCLikes extends HTMLElement {
      * build like web-component html node elements
      */
     buildElement() {
-        this.LikesIcon = document.createElement('button');
+        
         //Like SVG icon - you can customize it here
         this.LikesIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path xmlns="http://www.w3.org/2000/svg" d="M16.44 3.10156C14.63 3.10156 13.01 3.98156 12 5.33156C10.99 3.98156 9.37 3.10156 7.56 3.10156C4.49 3.10156 2 5.60156 2 8.69156C2 9.88156 2.19 10.9816 2.52 12.0016C4.1 17.0016 8.97 19.9916 11.38 20.8116C11.72 20.9316 12.28 20.9316 12.62 20.8116C15.03 19.9916 19.9 17.0016 21.48 12.0016C21.81 10.9816 22 9.88156 22 8.69156C22 5.60156 19.51 3.10156 16.44 3.10156Z"/></svg>';
         this.LikesIcon.onpointerup = ev => this.onLikesSubmit(ev);
         this.LikesCountNode = document.createTextNode(`${this.LikesCount}`);
+        // if(this.Liked) {
+        //     this.classList.add('-liked');
+        // }
+        // if(this.LikesFetch) {
+        //     this.classList.add('-fetch');
+        // }
         this.append(this.LikesIcon);
         this.append(this.LikesCountNode);
     }
@@ -94,7 +104,8 @@ class WCLikes extends HTMLElement {
      * ABSTRACT METHOD NEEDS YOUR IMPLEMENTATION SEE wc-likes-post.ts example
      * submitLike to backend
      */
-    async fetchSubmitLikes():Promise<Number> {
+    async fetchSubmitLikes() {
+        
         const PromiseAPIStatus:number = await new Promise((resolve, reject) => {
             setTimeout(() => resolve(200), 1000);
         });
@@ -105,7 +116,8 @@ class WCLikes extends HTMLElement {
      * ABSTRACT METHOD NEEDS YOUR IMPLEMENTATION SEE wc-likes-post.ts example
      * fetch likes count from backend
      */
-    async fetchAsyncLikes(params:any):Promise<Number> {
+    async fetchAsyncLikes(params:any) {
+        
         const PromiseAPIStatus:number = await new Promise((resolve, reject) => {
             setTimeout(() => resolve(200), 1000);
         });
@@ -139,7 +151,5 @@ class WCLikes extends HTMLElement {
         }
     }};
 }
-
-window.customElements.define('wc-likes', WCLikes);
 
 export default WCLikes;
