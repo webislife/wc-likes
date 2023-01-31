@@ -17,18 +17,18 @@ declare class WCLikes extends HTMLElement {
     LikesRendered: boolean;
     LikesCount: number;
     LikesFetch: boolean;
+    LikesDisabled: boolean;
     LikesCountNode: Node;
     LikesIcon: HTMLElement;
     LikesPhrases: WCLikesLang;
-    LikesPhrasesLang: WCLikesPhrasesKey | string;
+    LikesPhrasesLang: WCLikesPhrasesKey;
     constructor();
     static get observedAttributes(): string[];
     attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
-    valueOf(): number;
     connectedCallback(): void;
     buildElement(): void;
-    fetchSubmitLikes(): Promise<Number>;
-    fetchAsyncLikes(params: any): Promise<Number>;
+    fetchSubmitLikes(): Promise<number>;
+    fetchAsyncLikes(params: any): Promise<number>;
     onLikesSubmit(ev: Event): Promise<void>;
 }
 export default WCLikes;

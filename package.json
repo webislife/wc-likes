@@ -1,6 +1,6 @@
 {
   "name": "@webislife/wc-likes",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "native web-component for likes in any pages and js frameworks",
   "main": "src/wc-likes.ts",
   "scripts": {
