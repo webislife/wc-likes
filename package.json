@@ -1,7 +1,7 @@
 {
-  "name": "@webislife/wc-likes",
-  "version": "1.0.2",
-  "description": "native web-component for likes in any pages and js frameworks",
+  "name": "wc-likes",
+  "version": "1.0.4",
+  "description": "Very lightweight native web-component for likes in any pages and js frameworks",
   "main": "src/wc-likes.ts",
   "scripts": {
     "sass": "./node_modules/node-sass/bin/node-sass ./src -o ./dist",
@@ -19,7 +19,7 @@
     "native",
     "es6"
   ],
-  "author": "srokoff.ru",
+  "author": "srokoff",
   "license": "opensource",
   "bugs": {
     "url": "https://github.com/webislife/wc-likes/issues"

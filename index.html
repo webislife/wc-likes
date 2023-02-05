@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WC-likes demo integration</title>
+    <link rel="stylesheet" href="./dist/wc-likes.css">
+    <link rel="stylesheet" href="https://webislife.ru/wp-content/themes/wl/content.css">
+        <script type="module">
+            import WCLikes from './dist/wc-likes.js';
+            window.customElements.define('wc-likes', WCLikes);
+        </script>
+    <style>
+        body {
+            font-size: 16px;
+            line-height: 1.5em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        main, footer {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 80vw;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p>This page abailable in <a href="https://webislife.ru/demo/wc-likes/index-ru.html">🇷🇺 Русском языке</a></p>
+        <h1>Web component <code>wc-likes</code></h1>
+        <p>
+            Demo available states
+        </p>
+        <p>
+            Already liked - 
+            <wc-likes class="-liked" value="155" data-hint="Already liked"></wc-likes>
+        </p>
+        <p>
+            Fetch likes -
+            <wc-likes class="-fetch" value="1250"></wc-likes>
+        </p>
+        <p>
+            Disabled likes - 
+            <wc-likes class="-disabled" value="11"></wc-likes>
+        </p>
+        <p>
+            Try like!
+            <wc-likes value="14041"></wc-likes>
+        </p>
+        <p>
+            Simple demo integration code
+        </p>
+        <p>
+            <pre data-lang="js">
+                import WCLikes from './wc-likes.js';
+                window.customElements.define('wc-likes', WCLikes);</pre>
+        </p>
+        <p>
+            Use in HTML5
+        </p>
+        <pre data-lang="html">
+            &lt;wc-likes class="-liked" value="155" data-hint="already liked">&lt;/wc-likes></pre>
+        <p>
+            Download <a href="https://www.npmjs.com/package/wc-likes">npm package</a>  and see more info in <a href="https://github.com/webislife/wc-likes">git repo</a><br>
+            Connect with author in <a href="https://webislife.ru">webislife.ru</a>
+            See also:
+            <ol>
+                <li>
+                    🇺🇸<a href="https://webislife.ru/demo/vue-wc-likes/">Vue integration</a>
+                </li>
+                <li>
+                    🇷🇺<a href="https://webislife.ru/strokoff/pishem-pereispolzuemyj-web-komponent-dlya-lajkov/">History create</a>
+                </li>
+                <li>
+                    🇷🇺<a href="https://webislife.ru/strokoff/integriruem-veb-komponent-wc-likes-v-wordpress/">Wordpress integration</a>
+                </li>
+            </ol>
+        </p>
+    </main>
+   <footer>
+    <small>
+        Dev by <a href="https://strokoff.ru">strokoff</a>
+    </small>
+   </footer>
+</body>
+</html>

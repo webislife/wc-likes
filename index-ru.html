@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WC-likes демонстрация возможностей</title>
+    <link rel="stylesheet" href="./dist/wc-likes.css">
+    <link rel="stylesheet" href="https://webislife.ru/wp-content/themes/wl/content.css">
+        <script type="module">
+            import WCLikes from './dist/wc-likes.js';
+            window.customElements.define('wc-likes', WCLikes);
+        </script>
+    <style>
+        body {
+            font-size: 16px;
+            line-height: 1.5em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        main, footer {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 80vw;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p>Эта страница доступна <a href="https://webislife.ru/demo/wc-likes/index.html">🇺🇸 English language</a></p>
+        <h1>Веб-компонент <code>wc-likes</code></h1>
+        <p>
+            Демонстрация состояния
+        </p>
+        <p>
+            Уже лайкнули - 
+            <wc-likes class="-liked" value="155" data-hint="Уже лайкнули"></wc-likes>
+        </p>
+        <p>
+            Загрузка лайков -
+            <wc-likes class="-fetch" value="1250"></wc-likes>
+        </p>
+        <p>
+            Лайки заблокированы - 
+            <wc-likes class="-disabled" value="11"></wc-likes>
+        </p>
+        <p>
+            Доступный лайк - 
+            <wc-likes value="14041"></wc-likes>
+        </p>
+        <p>
+            Простейший код интеграции
+        </p>
+        <p>
+            <pre data-lang="js">
+                import WCLikes from './wc-likes.js';
+                window.customElements.define('wc-likes', WCLikes);</pre>
+        </p>
+        <p>
+            Использование в HTML5
+        </p>
+        <pre data-lang="html">
+            &lt;wc-likes class="-liked" value="155" data-hint="already liked">&lt;/wc-likes></pre>
+        <p>
+            Скачивайте <a href="https://www.npmjs.com/package/wc-likes">npm пакет</a> и смотрите в <a href="https://github.com/webislife/wc-likes">git репозитории</a> больше информации.<br>
+            Присоединяйтесь к общению с автором плагина на <a href="https://webislife.ru">webislife.ru</a>
+            Смотрите также:
+            <ol>
+                <li>
+                    🇺🇸<a href="https://webislife.ru/demo/vue-wc-likes/">Demo интеграции с vue компонентом</a>
+                </li>
+                <li>
+                    🇷🇺<a href="https://webislife.ru/strokoff/pishem-pereispolzuemyj-web-komponent-dlya-lajkov/">История создания</a>
+                </li>
+                <li>
+                    🇷🇺<a href="https://webislife.ru/strokoff/integriruem-veb-komponent-wc-likes-v-wordpress/">Интеграция c wordpress</a>
+                </li>
+            </ol>
+        </p>
+    </main>
+   <footer>
+    <small>
+        Разработка <a href="https://strokoff.ru">strokoff</a>
+    </small>
+   </footer>
+</body>
+</html>
