@@ -1,6 +1,6 @@
 {
   "name": "wc-likes",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Very lightweight native web-component for likes in any pages and js frameworks",
   "main": "src/wc-likes.ts",
   "scripts": {
@@ -15,12 +15,13 @@
   },
   "keywords": [
     "web-component",
+    "custom-element",
     "likes",
     "native",
     "es6"
   ],
   "author": "srokoff",
-  "license": "opensource",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/webislife/wc-likes/issues"
   },

@@ -1,5 +1,5 @@
 # wc-likes
-
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/wc-likes)
 Native web-component for likes in any pages. Very simple for use\customize and integration with any js framework like vue\react\angular\other, support best web development practises.
 See also - [vue-wc-likes](https://github.com/webislife/vue-wc-likes) based on this web-component
 
